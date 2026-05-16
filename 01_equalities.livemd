@@ -1,0 +1,51 @@
+# Elixir Koans - 01 Equalities
+
+```elixir
+import ExUnit.Assertions
+```
+
+## We shall contemplate truth by testing reality, via equality
+
+```elixir
+assert true == ___
+```
+
+## Not something is the opposite of it
+
+```elixir
+assert !true == ___
+```
+
+## To understand reality, we must compare our expectations against reality
+
+```elixir
+assert 2 == 1 + ___
+```
+
+## Some things may appear different, but be the same
+
+```elixir
+assert 1 == 2 / ___
+```
+
+## Unless they actually are different
+
+```elixir
+3.2 != ___
+```
+
+## Some may be looking for bigger things
+
+```elixir
+assert ___ > 3
+```
+
+## Others are happy with less
+
+```elixir
+assert ___ < 3
+```
+
+## Next Steps
+
+* [Next: Strings](02_strings.livemd)

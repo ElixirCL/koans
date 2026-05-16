@@ -1,0 +1,85 @@
+# Elixir Koans - 08 Maps
+
+```elixir
+import ExUnit.Assertions
+```
+
+## Intro
+
+```elixir
+person = %{
+    first_name: "Jon",
+    last_name: "Snow",
+    age: 27
+}
+```
+
+## Maps represent structured data, like a person
+
+```elixir
+assert person == %{first_name: ___, last_name: "Snow", age: 27}
+```
+
+## Fetching a value returns a tuple with ok when it exists
+
+```elixir
+assert Map.fetch(person, :age) == ___
+```
+
+## Or the atom :error when it doesn't
+
+```elixir
+assert Map.fetch(person, :family) == ___
+```
+
+## Extending a map is as simple as adding a new pair
+
+```elixir
+person_with_hobby = Map.put(person, :hobby, "Kayaking")
+assert Map.fetch(person_with_hobby, :hobby) == ___
+```
+
+## Put can also overwrite existing values
+
+```elixir
+older_person = Map.put(person, :age, 37)
+assert Map.fetch(older_person, :age) == ___
+```
+
+## Or you can use some syntactic sugar for existing elements
+
+```elixir
+younger_person = %{person | age: 16}
+assert Map.fetch(younger_person, :age) == ___
+```
+
+## Can remove pairs by key
+
+```elixir
+without_age = Map.delete(person, :age)
+assert Map.has_key?(without_age, :age) == ___
+```
+
+## Can merge maps
+
+```elixir
+assert Map.merge(%{first_name: "Jon"}, %{last_name: "Snow"}) == ___
+```
+
+## When merging, the last map wins
+
+```elixir
+merged = Map.merge(person, %{last_name: "Baratheon"})
+assert Map.fetch(merged, :last_name) == ___
+```
+
+## You can also select sub-maps out of a larger map
+
+```elixir
+assert Map.take(person, [:first_name, :last_name]) == ___
+```
+
+## Next Steps
+
+* [Previous: Keyword Lists](07_keyword_lists.livemd)
+* [Next: Map Sets](09_map_sets.livemd)

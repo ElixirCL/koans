@@ -1,0 +1,70 @@
+# Elixir Koans - 02 Strings
+
+```elixir
+import ExUnit.Assertions
+```
+
+## Strings are there to represent text
+
+```elixir
+assert "hello" == ___
+```
+
+## Values may be inserted into strings by interpolation
+
+```elixir
+assert "1 + 1 = #{1 + 1}" == ___
+```
+
+## They can be put together
+
+```elixir
+assert "hello world" == ___ <> "world"
+```
+
+## Or pulled apart into a list when needed
+
+```elixir
+assert ["hello", "world"] == String.split(___, " ")
+```
+
+## Be careful, a message may be altered
+
+```elixir
+assert String.replace("An awful day", "awful", "incredible") == ___
+```
+
+## But strings never lie about themselves
+
+```elixir
+assert true == String.contains?("An incredible day", ___)
+```
+
+## Sometimes you want just the opposite of what is given
+
+```elixir
+assert ___ == String.reverse("ananab")
+```
+
+## Other times a little cleaning is in order
+
+```elixir
+assert String.trim("  \n banana\n  ") == ___
+```
+
+## Repetition is the mother of learning
+
+```elixir
+assert String.duplicate("String", 3) == ___
+```
+
+## Strings can be louder when necessary
+
+```elixir
+assert String.upcase("listen") == ___
+```
+
+## Next Steps
+
+* [Previous: Equalities](01_equalities.livemd)
+* [Next: Numbers](03_numbers.livemd)

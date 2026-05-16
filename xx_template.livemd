@@ -1,0 +1,16 @@
+# Elixir Koans - XX Template
+
+```elixir
+import ExUnit.Assertions
+```
+
+## Example Title
+
+```elixir
+assert "hello" == ___
+```
+
+## Next Steps
+
+* [Previous: Equalities](01_equalities.livemd)
+* [Next: Numbers](03_numbers.livemd)

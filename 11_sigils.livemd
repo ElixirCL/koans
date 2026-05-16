@@ -1,0 +1,59 @@
+# Elixir Koans - 11 Sigils
+
+```elixir
+import ExUnit.Assertions
+```
+
+## The ~s sigil is a different way of expressing string literals
+
+```elixir
+assert ~s{This is a string} == ___
+```
+
+## Sigils are useful to avoid escaping quotes in strings
+
+```elixir
+assert "\"Welcome to the jungle\", they said." == ___
+```
+
+## Sigils can use different delimiters
+
+```elixir
+matches? = ~s{This works!} == ~s[This works!]
+assert matches? == ___
+```
+
+## The lowercase ~s sigil supports string interpolation
+
+```elixir
+assert ~s[1 + 1 = #{1 + 1}] == ___
+```
+
+## The ~S sigil is similar to ~s but doesn't do interpolation
+
+```elixir
+assert ~S[1 + 1 = #{1+1}] == ___
+```
+
+## The ~w sigil creates word lists
+
+```elixir
+assert ~w(Hello world) == ___
+```
+
+## The ~w sigil also allows interpolation
+
+```elixir
+assert ~w(Hello 1#{1 + 1}3) == ___
+```
+
+## The ~W sigil behaves to ~w as ~S behaves to ~s
+
+```elixir
+assert ~W(Hello #{1+1}) == ___
+```
+
+## Next Steps
+
+* [Previous: Structs](10_structs.livemd)
+* [Next: Pattern Matching](12_pattern_matching.livemd)

@@ -1,0 +1,16 @@
+# Elixir Koans - 13 Functions
+
+```elixir
+import ExUnit.Assertions
+```
+
+## Example Title
+
+```elixir
+assert "hello" == ___
+```
+
+## Next Steps
+
+* [Previous: Pattern Matching](12_pattern_matching.livemd)
+* [Next: Enums](14_enums.livemd)

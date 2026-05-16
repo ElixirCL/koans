@@ -1,0 +1,109 @@
+# Elixir Koans - 09 Map Sets
+
+```elixir
+import ExUnit.Assertions
+```
+
+## Intro 
+
+My name is Set, MapSet.
+
+```elixir
+set = MapSet.new([1, 2, 3, 4, 5])
+```
+
+## I do not allow duplication
+
+```elixir
+new_set = MapSet.new([1, 1, 2, 3, 3, 3])
+assert MapSet.size(new_set) == ___
+```
+
+## You cannot depend on my order
+
+The number "33" is actually special here. Erlang uses a different
+implementation for maps after 32 elements which does not maintain order.
+http://stackoverflow.com/a/40408469
+
+```elixir
+def sorted?(set) do
+    list = MapSet.to_list(set)
+    sorted = Enum.sort(list)
+    list == sorted
+end
+
+new_set = MapSet.new(1..33)
+assert sorted?(new_set) == ___
+```
+
+What do you think this answer to this assertion is?
+
+```elixir
+assert sorted?(set) == ___
+```
+
+## Does this value exist in the map set?
+
+```elixir
+assert MapSet.member?(set, 3) == ___
+```
+
+## I am merely another collection, but you can perform some operations on me
+
+```elixir
+new_set = MapSet.new(set, fn x -> 3 * x end)
+
+assert MapSet.member?(new_set, 15) == ___
+assert MapSet.member?(new_set, 1) == ___
+```
+
+## Add this value into a map set
+
+```elixir
+modified_set = MapSet.put(set, 6)
+
+assert MapSet.member?(modified_set, 6) == ___
+```
+
+## Delete this value from the map set
+
+```elixir
+modified_set = MapSet.delete(set, 1)
+
+assert MapSet.member?(modified_set, 1) == ___
+```
+
+## Are these maps twins?
+
+```elixir
+new_set = MapSet.new([1, 2, 3])
+
+assert MapSet.equal?(set, new_set) == ___
+```
+
+## I want only the common values in both sets
+
+```elixir
+intersection_set = MapSet.intersection(set, MapSet.new([5, 6, 7]))
+
+assert MapSet.member?(intersection_set, 5) == ___
+```
+
+## Unify my sets
+
+```elixir
+new_set = MapSet.union(set, MapSet.new([1, 5, 6, 7]))
+
+assert MapSet.size(new_set) == ___
+```
+
+## I want my set in a list
+
+```elixir
+assert MapSet.to_list(set) == ___
+```
+
+## Next Steps
+
+* [Previous: Maps](08_maps.livemd)
+* [Next: Structs](10_structs.livemd)

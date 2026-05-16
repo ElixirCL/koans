@@ -1,0 +1,16 @@
+# Elixir Koans - 18 Genservers
+
+```elixir
+import ExUnit.Assertions
+```
+
+## Example Title
+
+```elixir
+assert "hello" == ___
+```
+
+## Next Steps
+
+* [Previous: Agents](17_agents.livemd)
+* [Next: Protocols](19_protocols.livemd)

@@ -1,0 +1,15 @@
+# Elixir Koans - 24 With Statement
+
+```elixir
+import ExUnit.Assertions
+```
+
+## Example Title
+
+```elixir
+assert "hello" == ___
+```
+
+## Next Steps
+
+* [Previous: Pipe Operator](23_pipe_operator.livemd)

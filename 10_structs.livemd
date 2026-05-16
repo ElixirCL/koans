@@ -1,0 +1,89 @@
+# Elixir Koans - 10 Structs
+
+```elixir
+import ExUnit.Assertions
+```
+
+## Intro
+
+```elixir
+defmodule Person do
+  @moduledoc false
+  defstruct [:name, :age]
+end
+```
+
+## Structs are defined and named after a module
+
+```elixir
+person = %Person{}
+assert person == ___
+```
+
+## Unless previously defined, fields begin as nil
+
+```elixir
+nobody = %Person{}
+assert nobody.age == ___
+```
+
+## You can pass initial values to structs
+
+```elixir
+joe = %Person{name: "Joe", age: 23}
+assert joe.name == ___
+```
+
+## Update fields with the cons '|' operator
+
+```elixir
+joe = %Person{name: "Joe", age: 23}
+older = %{joe | age: joe.age + 10}
+assert older.age == ___
+```
+
+## Struct can be treated like maps
+
+```elixir
+silvia = %Person{age: 22, name: "Silvia"}
+
+assert Map.fetch(silvia, :age) == ___
+```
+
+## Use the put_in macro to replace a nested value
+
+```elixir
+defmodule Plane do
+  @moduledoc false
+  defstruct passengers: 0, maker: :boeing
+end
+
+defmodule Airline do
+  @moduledoc false
+  defstruct plane: %Plane{}, name: "Southwest"
+end
+```
+
+```elixir
+airline = %Airline{}
+assert put_in(airline.plane.maker, :airbus) == ___
+```
+
+## Use the update_in macro to modify a nested value
+
+```elixir
+airline = %Airline{plane: %Plane{passengers: 200}}
+assert update_in(airline.plane.passengers, fn x -> x + 2 end) == ___
+```
+
+## Use the put_in macro with atoms to replace a nested value in a non-struct
+
+```elixir
+airline = %{plane: %{maker: :boeing}, name: "Southwest"}
+assert put_in(airline[:plane][:maker], :cessna) == ___
+```
+
+## Next Steps
+
+* [Previous: Map Sets](09_map_sets.livemd)
+* [Next: Sigils](11_sigils.livemd)

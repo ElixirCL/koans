@@ -1,0 +1,48 @@
+# Elixir Koans - 07 Keyword Lists
+
+```elixir
+import ExUnit.Assertions
+```
+
+## Like maps, keyword lists are key-value pairs
+
+```elixir
+kw_list = [foo: "bar"]
+
+assert kw_list[:foo] == ___
+```
+
+## Keys may be repeated, but only the first is accessed
+
+```elixir
+kw_list = [foo: "bar", foo: "baz"]
+
+assert kw_list[:foo] == ___
+```
+
+## You could access the values of repeating key
+
+```elixir
+kw_list = [foo: "bar", foo1: "bar1", foo: "baz"]
+
+assert Keyword.get_values(kw_list, :foo) == [___, ___]
+```
+
+## Keyword lists are just special syntax for lists of two-element tuples
+
+```elixir
+assert [foo: "bar"] == [{___, ___}]
+```
+
+## But unlike maps, the keys in keyword lists must be atoms
+
+```elixir
+not_kw_list = [{"foo", "bar"}]
+
+assert_raise ArgumentError, fn -> not_kw_list[___] end
+```
+
+## Next Steps
+
+* [Previous: Lists](06_lists.livemd)
+* [Next: Maps](08_maps.livemd)

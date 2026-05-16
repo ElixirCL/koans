@@ -1,0 +1,199 @@
+# Elixir Koans - 03 Numbers
+
+```elixir
+import ExUnit.Assertions
+```
+
+## Intro
+
+Why is the number six so scared?
+
+Because seven eight nine!
+
+We should get to know numbers a bit more!
+
+## Is an integer equal to its float equivalent?
+
+```elixir
+assert 1 == 1.0 == ___
+```
+
+## Is an integer threequal to its float equivalent?
+
+```elixir
+assert 1 === 1.0 == ___
+```
+
+## Revisit division with threequal
+
+```elixir
+assert 2 / 2 === ___
+```
+
+## Another way to divide
+
+```elixir
+assert div(5, 2) == ___
+```
+
+## What remains or: The Case of the Missing Modulo Operator (%)
+
+```elixir
+assert rem(5, 2) == ___
+```
+
+## Other math operators may produce this
+
+```elixir
+assert 2 * 2 === ___
+```
+
+## Or other math operators may produce this
+
+```elixir
+assert 2 * 2.0 === ___
+```
+
+## Two ways to round, are they exactly the same?
+
+```elixir
+assert Float.round(1.2) === round(1.2) == ___
+```
+
+## Release the decimals into the void
+
+```elixir
+assert trunc(5.6) === ___
+```
+
+## Are you odd?
+
+```elixir
+assert Integer.is_odd(3) == ___
+```
+
+## Actually you might be even
+
+```elixir
+assert Integer.is_even(4) == ___
+```
+
+## Let's grab the individual digits in a list
+
+```elixir
+individual_digits = Integer.digits(58_127)
+assert individual_digits == ___
+```
+
+## Oh no! I need it back together
+
+```elixir
+number = Integer.undigits([1, 2, 3, 4])
+
+assert number == ___
+```
+
+## Actually I want my number as a string
+
+```elixir
+string_digit = Integer.to_string(1234)
+
+assert string_digit == ___
+```
+
+## The meaning of life in hexadecimal is 2A!
+
+```elixir
+assert Integer.parse("2A", 16) == {___, ""}
+```
+
+## The remaining unparsable part is also returned
+
+```elixir
+assert Integer.parse("5 years") == {5, ___}
+```
+
+## What if you parse a floating point value as an integer?
+
+```elixir
+assert Integer.parse("1.2") == {___, ___}
+```
+
+## Just want to parse to a float
+
+```elixir
+assert Float.parse("34.5") == {___, ""}
+```
+
+## Hmm, I want to parse this but it has some strings
+
+```elixir
+assert Float.parse("1.5 million dollars") == {___, " million dollars"}
+```
+
+## I don't want this decimal point, let's round up
+
+```elixir
+assert Float.ceil(34.25) === ___
+```
+
+## OK, I only want it to 1 decimal place
+
+```elixir
+assert Float.ceil(34.25, 1) === ___
+```
+
+## Rounding down is what I need
+
+```elixir
+assert Float.floor(99.99) === ___
+```
+
+## Rounding down to 2 decimal places
+
+```elixir
+assert Float.floor(12.345, 2) === ___
+```
+
+## Round the number up or down for me
+
+```elixir
+assert Float.round(5.5) === ___
+assert Float.round(5.4) === ___
+assert Float.round(8.94, 1) === ___
+assert Float.round(-5.5674, 3) === ___
+```
+
+## I want the first and last in the range
+
+```elixir
+first..last//_step = Range.new(1, 10)
+
+assert first == ___
+assert last == ___
+```
+
+## Does my number exist in the range?
+
+```elixir
+def range?(%Range{}), do: true
+def range?(_), do: false
+
+range = Range.new(1, 10)
+
+assert 4 in range == ___
+assert 10 in range == ___
+assert 0 in range == ___
+```
+
+## Is this a range?
+
+```elixir
+assert range?(1..10) == ___
+assert range?(0) == ___
+```
+
+## Next Steps
+
+* [Previous: Strings](02_strings.livemd)
+* [Next: Atoms](04_atoms.livemd)

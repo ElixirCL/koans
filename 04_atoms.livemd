@@ -1,0 +1,33 @@
+# Elixir Koans - 04 Atoms
+
+```elixir
+import ExUnit.Assertions
+```
+
+## Atoms are constants where their name is their own value
+
+```elixir
+adam = :human
+assert adam == ___
+```
+
+## It is surprising to find out that booleans are atoms
+
+```elixir
+assert is_atom(true) == ___
+assert is_boolean(false) == ___
+assert true == ___
+assert false == ___
+```
+
+## Like booleans, the nil value is also an atom
+
+```elixir
+assert is_atom(nil) == ___
+assert nil == ___
+```
+
+## Next Steps
+
+* [Previous: Numbers](03_numbers.livemd)
+* [Next: Tuples](05_tuples.livemd)

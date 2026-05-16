@@ -1,0 +1,60 @@
+# Elixir Koans - 05 Tuples
+
+```elixir
+import ExUnit.Assertions
+```
+
+## Tuples can contain different things
+
+```elixir
+assert {:a, 1, "hi"} == ___
+```
+
+## Tuples have a size
+
+```elixir
+assert tuple_size({:a, :b, :c}) == ___
+```
+
+## You can pull out individual elements
+
+```elixir
+assert elem({:a, "hi"}, 1) == ___
+```
+
+## You can change individual elements of a tuple
+
+```elixir
+assert put_elem({:a, "hi"}, 1, "bye") == ___
+```
+
+## You can also simply extend a tuple with new stuff
+
+```elixir
+assert Tuple.insert_at({:a, "hi"}, 1, :new_thing) == ___
+```
+
+## Add things at the end (by constructing a new tuple)
+
+```elixir
+{first, second} = {"Huey", "Dewey"}
+extended = {first, second, "Louie"}
+assert extended == ___
+```
+
+## Or remove them
+
+```elixir
+assert Tuple.delete_at({:this, :is, :not, :awesome}, 2) == ___
+```
+
+## Turn it into a list in case you need it
+
+```elixir
+assert Tuple.to_list({:this, :can, :be, :a, :list}) == ___
+```
+
+## Next Steps
+
+* [Previous: Atoms](04_atoms.livemd)
+* [Next: Lists](06_lists.livemd)
