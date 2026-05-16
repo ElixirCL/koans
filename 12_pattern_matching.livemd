@@ -4,10 +4,250 @@
 import ExUnit.Assertions
 ```
 
-## Example Title
+## One matches one
 
 ```elixir
-assert "hello" == ___
+assert match?(1, ___)
+```
+
+## Patterns can be used to pull things apart
+
+```elixir
+[head | tail] = [1, 2, 3, 4]
+
+assert head == ___
+assert tail == ___
+```
+
+## And then put them back together
+
+```elixir
+head = 1
+tail = [2, 3, 4]
+
+assert ___ == [head | tail]
+```
+
+## Some values can be ignored
+
+```elixir
+[_first, _second, third, _fourth] = [1, 2, 3, 4]
+
+assert third == ___
+```
+
+## Strings come apart just as easily
+
+```elixir
+"Shopping list: " <> items = "Shopping list: eggs, milk"
+
+assert items == ___
+```
+
+## Maps support partial pattern matching
+
+```elixir
+%{make: make} = %{type: "car", year: 2016, make: "Honda", color: "black"}
+
+assert make == ___
+```
+
+## Lists must match exactly
+
+```elixir
+assert_raise ___, fn ->
+    [a, b] = [1, 2, 3]
+end
+```
+
+## So must keyword lists
+
+```elixir
+kw_list = [type: "car", year: 2016, make: "Honda"]
+[_type | [_year | [tuple]]] = kw_list
+assert tuple == {___, ___}
+```
+
+## The pattern can make assertions about what it expects
+
+```elixir
+assert match?([1, _second, _third], ___)
+```
+
+## Functions perform pattern matching on their arguments
+
+```elixir
+def make_noise(%{type: "cat"}), do: "Meow"
+def make_noise(%{type: "dog"}), do: "Woof"
+def make_noise(_anything), do: "Eh?"
+
+cat = %{type: "cat"}
+dog = %{type: "dog"}
+snake = %{type: "snake"}
+
+assert make_noise(cat) == ___
+assert make_noise(dog) == ___
+assert make_noise(snake) == ___
+```
+
+## And they will only run the code that matches the argument
+
+```elixir
+name = fn
+  "duck" -> "Donald"
+  "mouse" -> "Mickey"
+  _other -> "I need a name!"
+end
+
+assert name.("mouse") == ___
+assert name.("duck") == ___
+assert name.("donkey") == ___
+```
+
+## Errors are shaped differently than successful results
+
+```elixir
+dog = %{type: "barking"}
+
+type =
+  case Map.fetch(dog, :type) do
+    {:ok, value} -> value
+    :error -> "not present"
+  end
+
+assert type == ___
+```
+
+## You can pattern match into the fields of a struct
+
+```elixir
+defmodule Animal do
+    @moduledoc false
+    defstruct [:kind, :name]
+end
+
+%Animal{name: name} = %Animal{kind: "dog", name: "Max"}
+assert name == ___
+```
+
+## ...or onto the type of the struct itself
+
+```elixir
+defmodule Plane do
+  @moduledoc false
+  defstruct passengers: 0, maker: :boeing
+  def plane?(%Plane{}), do: true
+  def plane?(_), do: false
+end
+
+assert Plane.plane?(%Plane{passengers: 417, maker: :boeing}) == ___
+assert Plane.plane?(%Animal{}) == ___
+```
+
+## Structs will even match with a regular map
+
+```elixir
+%{name: name} = %Animal{kind: "dog", name: "Max"}
+assert name == ___
+```
+
+## A value can be bound to a variable
+
+```elixir
+a = 1
+assert a == ___
+```
+
+## A variable can be rebound
+
+```elixir
+a = 1
+a = 2
+assert a == ___
+```
+
+## A variable can be pinned to use its value when matching instead of binding to a new value
+
+```elixir
+pinned_variable = 1
+
+example = fn
+  ^pinned_variable -> "The number One"
+  2 -> "The number Two"
+  number -> "The number #{number}"
+end
+
+assert example.(1) == ___
+assert example.(2) == ___
+assert example.(3) == ___
+```
+
+## Pinning works anywhere one would match, including 'case'
+
+```elixir
+pinned_variable = 1
+
+result =
+  case 1 do
+    ^pinned_variable -> "same"
+    other -> "different #{other}"
+  end
+
+assert result == ___
+```
+
+## Trying to rebind a pinned variable will result in an error
+
+```elixir
+a = 1
+
+assert_raise MatchError, fn ->
+  ^a = ___
+end
+```
+
+## Pattern matching works with nested data structures
+
+```elixir
+user = %{
+  profile: %{
+    personal: %{name: "Alice", age: 30},
+    settings: %{theme: "dark", notifications: true}
+  }
+}
+
+%{profile: %{personal: %{age: age}, settings: %{theme: theme}}} = user
+assert age == ___
+assert theme == ___
+```
+
+## Lists can be pattern matched with head and tail
+
+```elixir
+numbers = [1, 2, 3, 4, 5]
+
+[first, second | rest] = numbers
+assert first == ___
+assert second == ___
+assert rest == ___
+
+[head | _tail] = numbers
+assert head == ___
+```
+
+## Pattern matching can extract values from function return tuples
+
+```elixir
+divide = fn
+  _, 0 -> {:error, :division_by_zero}
+  x, y -> {:ok, x / y}
+end
+
+{:ok, result} = divide.(10, 2)
+assert result == ___
+
+{:error, reason} = divide.(10, 0)
+assert reason == ___
 ```
 
 ## Next Steps

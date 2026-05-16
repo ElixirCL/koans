@@ -4,7 +4,7 @@
 import ExUnit.Assertions
 ```
 
-## Intro 
+## Intro
 
 My name is Set, MapSet.
 
