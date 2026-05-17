@@ -4,10 +4,46 @@
 import ExUnit.Assertions
 ```
 
-## Example Title
+## Intro
+
+A comprehension is made of three parts: generators, filters, and collectibles. We will look at how these interact with each other
+
+## The generator, `n <- [1, 2, 3, 4]`, is providing the values for our comprehension
 
 ```elixir
-assert "hello" == ___
+assert for(n <- [1, 2, 3, 4], do: n * n) == ___
+```
+
+## Any enumerable can be a generator
+
+```elixir
+assert for(n <- 1..4, do: n * n) == ___
+```
+
+## A generator specifies how to extract values from a collection
+
+```elixir
+collection = [["Hello", "World"], ["Apple", "Pie"]]
+assert for([a, b] <- collection, do: "#{a} #{b}") == ___
+```
+
+## You can use multiple generators at once
+
+```elixir
+assert for(x <- ["little", "big"], y <- ["dogs", "cats"], do: "#{x} #{y}") == ___
+```
+
+## Use a filter to reduce your work
+
+```elixir
+assert for(n <- [1, 2, 3, 4, 5, 6], n > 3, do: n) == ___
+```
+
+## Add the result of a comprehension to an existing collection
+
+```elixir
+collection = for x <- ["Pecan", "Pumpkin"], into: %{}, do: {x, "#{x} Pie"}
+assert collection == ___
 ```
 
 ## Next Steps

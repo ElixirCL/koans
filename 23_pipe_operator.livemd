@@ -4,10 +4,234 @@
 import ExUnit.Assertions
 ```
 
-## Example Title
+## Intro
+
+The Pipe Operator - Making data transformation elegant and readable
+
+## The pipe operator passes the result of one function to the next
 
 ```elixir
-assert "hello" == ___
+result =
+  "hello world"
+  |> String.upcase()
+  |> String.split(" ")
+  |> Enum.join("-")
+
+assert result == ___
+```
+
+## Without pipes, nested function calls can be hard to read
+
+```elixir
+nested_result = Enum.join(String.split(String.downcase("Hello World"), " "), "_")
+piped_result = "Hello World" |> String.downcase() |> String.split(" ") |> Enum.join("_")
+
+assert nested_result == piped_result
+assert piped_result == ___
+```
+
+## Pipes pass the result as the first argument to the next function
+
+```elixir
+result =
+  [1, 2, 3, 4, 5]
+  |> Enum.filter(&(&1 > 2))
+  |> Enum.map(&(&1 * 2))
+
+assert result == ___
+```
+
+## Additional arguments can be passed to piped functions
+
+```elixir
+result =
+  "hello world"
+  |> String.split(" ")
+  |> Enum.join(", ")
+
+assert result == ___
+```
+
+## Pipes work with anonymous functions too
+
+```elixir
+double = fn x -> x * 2 end
+add_ten = fn x -> x + 10 end
+
+result =
+  5
+  |> double.()
+  |> add_ten.()
+
+assert result == ___
+```
+
+## You can pipe into function captures
+
+```elixir
+result =
+  [1, 2, 3]
+  |> Enum.map(&Integer.to_string/1)
+  |> Enum.join("-")
+
+assert result == ___
+```
+
+## Complex data transformations become readable with pipes
+
+```elixir
+users = [
+  %{name: "Bob", age: 25, active: false},
+  %{name: "Charlie", age: 35, active: true},
+  %{name: "Alice", age: 30, active: true}
+]
+
+active_names =
+  users
+  |> Enum.filter(& &1.active)
+  |> Enum.map(& &1.name)
+  |> Enum.sort()
+
+assert active_names == ___
+```
+
+## Pipes can be split across multiple lines for readability
+
+```elixir
+result =
+  "the quick brown fox jumps over the lazy dog"
+  |> String.split(" ")
+  |> Enum.filter(&(String.length(&1) > 3))
+  |> Enum.map(&String.upcase/1)
+  |> Enum.take(3)
+
+assert result == ___
+```
+
+## The then/2 function is useful when you need to call a function that doesn't take piped value as first argument
+
+```elixir
+result =
+  [1, 2, 3]
+  |> Enum.map(&(&1 * 2))
+  |> then(&Enum.zip([:a, :b, :c], &1))
+
+assert result == ___
+```
+
+## Pipes can be used with case statements
+
+```elixir
+process_number = fn x ->
+  x
+  |> Integer.parse()
+  |> case do
+    {num, ""} -> {:ok, num * 2}
+    _ -> {:error, :invalid_number}
+  end
+  
+assert process_number.("42") == ___
+assert process_number.("abc") == ___
+```
+
+## Conditional pipes can use if/unless
+
+```elixir
+process_string = fn str, should_upcase ->
+  str
+  |> String.trim()
+  |> then(&if should_upcase, do: String.upcase(&1), else: &1)
+  |> String.split(" ")
+end
+
+assert process_string.("  hello world  ", true) == ___
+assert process_string.("  hello world  ", false) == ___
+```
+
+## Pipes work great with Enum functions for data processing
+
+```elixir
+sales_data = [
+  %{product: "Widget", amount: 100, month: "Jan"},
+  %{product: "Gadget", amount: 200, month: "Jan"},
+  %{product: "Widget", amount: 150, month: "Feb"},
+  %{product: "Gadget", amount: 180, month: "Feb"}
+]
+
+widget_total =
+  sales_data
+  |> Enum.filter(&(&1.product == "Widget"))
+  |> Enum.map(& &1.amount)
+  |> Enum.sum()
+
+assert widget_total == ___
+```
+
+## Tap lets you perform side effects without changing the pipeline
+
+```elixir
+result =
+  [1, 2, 3]
+  |> Enum.map(&(&1 * 2))
+  |> tap(&IO.inspect(&1, label: "After doubling"))
+  |> Enum.sum()
+
+assert result == ___
+```
+
+## Multiple transformations can be chained elegantly
+
+```elixir
+text = "The quick brown fox dumped over the lazy dog"
+
+word_stats =
+  text
+  |> String.downcase()
+  |> String.split(" ")
+  |> Enum.group_by(&String.first/1)
+  |> Enum.map(fn {letter, words} -> {letter, length(words)} end)
+  |> Enum.into(%{})
+
+assert word_stats["d"] == ___
+assert word_stats["t"] == ___
+assert word_stats["q"] == ___
+```
+
+## Pipes can be used in function definitions for clean APIs
+
+```elixir
+defmodule TextProcessor do
+  @moduledoc false
+  def clean_and_count(text) do
+    text
+    |> String.trim()
+    |> String.downcase()
+    |> String.replace(~r/[^\w\s]/, "")
+    |> String.split()
+    |> length()
+end
+
+assert TextProcessor.clean_and_count("  Hello, World! How are you?  ") == ___
+```
+
+## Error handling can be integrated into pipelines
+
+```elixir
+safe_divide = fn
+  {x, 0} -> {:error, :division_by_zero}
+  {x, y} -> {:ok, x / y}
+end
+
+pipeline = fn x, y ->
+  {x, y}
+  |> safe_divide.()
+  |> case do
+    {:ok, result} -> "Result: #{result}"
+    {:error, reason} -> "Error: #{reason}"
+end
+
+assert pipeline.(10, 2) == ___
+assert pipeline.(10, 0) == ___
 ```
 
 ## Next Steps

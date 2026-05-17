@@ -4,10 +4,195 @@
 import ExUnit.Assertions
 ```
 
-## Example Title
+## Functions map arguments to outputs
 
 ```elixir
-assert "hello" == ___
+def greet(name) do
+    "Hello, #{name}!"
+end
+
+assert greet("World") == ___
+```
+
+## Single line functions are cool, but mind the comma and the colon!
+
+```elixir
+def multiply(a, b), do: a * b
+
+assert 6 == multiply(2, ___)
+```
+
+## Functions with the same name are distinguished by the number of arguments they take
+
+```elixir
+def first(foo, bar), do: "#{foo} and #{bar}"
+def first(foo), do: "Only #{foo}"
+
+assert first("One", "Two") == ___
+assert first("One") == ___
+```
+
+## Functions can have default argument values
+
+```elixir
+def repeat_again(message, times \\ 3) do
+  String.duplicate(message, times)
+end
+
+assert repeat_again("Hello ") == ___
+assert repeat_again("Hello ", 2) == ___
+```
+
+## Functions can have guard expressions
+
+```elixir
+def sum_up(thing) when is_list(thing), do: :entire_list
+def sum_up(_thing), do: :single_thing
+
+assert sum_up([1, 2, 3]) == ___
+assert sum_up(1) == ___
+```
+
+## Intricate guards are possible, but be mindful of the reader
+
+```elixir
+def bigger(a, b) when a > b, do: "#{a} is bigger than #{b}"
+def bigger(a, b) when a <= b, do: "#{a} is not bigger than #{b}"
+
+  assert bigger(10, 5) == ___
+  assert bigger(4, 27) == ___
+```
+
+## For simpler cases, pattern matching is effective
+
+```elixir
+def get_number(0), do: "The number was zero"
+def get_number(number), do: "The number was #{number}"
+
+assert get_number(0) == ___
+assert get_number(5) == ___
+```
+
+## Little anonymous functions are common, and called with a dot
+
+```elixir
+multiply = fn a, b -> a * b end
+assert multiply.(2, 3) == ___
+```
+
+## You can even go shorter, by using capture syntax `&()` and positional arguments
+
+```elixir
+multiply = &(&1 * &2)
+assert multiply.(2, 3) == ___
+```
+
+## Prefix a string with & to build a simple anonymous greet function
+
+```elixir
+greet = &"Hi, #{&1}!"
+assert greet.("Foo") == ___
+```
+
+## You can build anonymous functions out of any elixir expression by prefixing it with &
+
+```elixir
+three_times = &[&1, &1, &1]
+assert three_times.("foo") == ___
+```
+
+## You can use pattern matching to define multiple cases for anonymous functions
+
+```elixir
+inspirational_quote = fn
+  {:ok, result} -> "Success is #{result}"
+  {:error, reason} -> "You just lost #{reason}"
+end
+
+assert inspirational_quote.({:ok, "no accident"}) == ___
+assert inspirational_quote.({:error, "the game"}) == ___
+```
+
+## You can pass functions around as arguments. Place an '&' before the name and state the arity
+
+```elixir
+def times_five_and_then(number, fun), do: fun.(number * 5)
+def square(number), do: number * number
+
+assert times_five_and_then(2, &square/1) == ___
+```
+
+## The '&' operation is not needed for anonymous functions
+
+```elixir
+cube = fn number -> number * number * number end
+assert times_five_and_then(2, cube) == ___
+```
+
+## The result of a function can be piped into another function as its first argument
+
+```elixir
+result =
+  "full-name"
+  |> String.split("-")
+  |> Enum.map_join(" ", &String.capitalize/1)
+
+assert result == ___
+```
+
+## Pipes make data transformation pipelines readable
+
+```elixir
+numbers = [1, 2, 3, 4, 5]
+
+result =
+  numbers
+  |> Enum.filter(&(&1 > 2))
+  |> Enum.map(&(&1 * 2))
+  |> Enum.sum()
+
+assert result == ___
+```
+
+```elixir
+user_input = "  Hello World  "
+
+cleaned =
+  user_input
+  |> String.trim()
+  |> String.downcase()
+  |> String.replace(" ", "_")
+
+assert cleaned == ___
+```
+
+## Conveniently keyword lists can be used for function options
+
+```elixir
+transform = fn str, opts ->
+  if opts[:upcase] do
+    String.upcase(str)
+  else
+    str
+  end
+end
+
+assert transform.("good", upcase: true) == ___
+assert transform.("good", upcase: false) == ___
+```
+
+## Anonymous functions can use the & capture syntax for very concise definitions
+
+```elixir
+add_one = &(&1 + 1)
+multiply_by_two = &(&1 * 2)
+
+result = 5 |> add_one.() |> multiply_by_two.()
+assert result == ___
+
+# You can also capture existing functions
+string_length = &String.length/1
+assert string_length.("hello") == ___
 ```
 
 ## Next Steps
