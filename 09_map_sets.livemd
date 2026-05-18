@@ -16,6 +16,9 @@ set = MapSet.new([1, 2, 3, 4, 5])
 
 ```elixir
 new_set = MapSet.new([1, 1, 2, 3, 3, 3])
+```
+
+```elixir
 assert MapSet.size(new_set) == ___
 ```
 
@@ -33,6 +36,9 @@ def sorted?(set) do
 end
 
 new_set = MapSet.new(1..33)
+```
+
+```elixir
 assert sorted?(new_set) == ___
 ```
 
@@ -52,8 +58,13 @@ assert MapSet.member?(set, 3) == ___
 
 ```elixir
 new_set = MapSet.new(set, fn x -> 3 * x end)
+```
 
+```elixir
 assert MapSet.member?(new_set, 15) == ___
+```
+
+```elixir
 assert MapSet.member?(new_set, 1) == ___
 ```
 
@@ -61,7 +72,9 @@ assert MapSet.member?(new_set, 1) == ___
 
 ```elixir
 modified_set = MapSet.put(set, 6)
+```
 
+```elixir
 assert MapSet.member?(modified_set, 6) == ___
 ```
 
@@ -69,7 +82,9 @@ assert MapSet.member?(modified_set, 6) == ___
 
 ```elixir
 modified_set = MapSet.delete(set, 1)
+```
 
+```elixir
 assert MapSet.member?(modified_set, 1) == ___
 ```
 
@@ -77,7 +92,9 @@ assert MapSet.member?(modified_set, 1) == ___
 
 ```elixir
 new_set = MapSet.new([1, 2, 3])
+```
 
+```elixir
 assert MapSet.equal?(set, new_set) == ___
 ```
 
@@ -85,7 +102,9 @@ assert MapSet.equal?(set, new_set) == ___
 
 ```elixir
 intersection_set = MapSet.intersection(set, MapSet.new([5, 6, 7]))
+```
 
+```elixir
 assert MapSet.member?(intersection_set, 5) == ___
 ```
 
@@ -93,7 +112,9 @@ assert MapSet.member?(intersection_set, 5) == ___
 
 ```elixir
 new_set = MapSet.union(set, MapSet.new([1, 5, 6, 7]))
+```
 
+```elixir
 assert MapSet.size(new_set) == ___
 ```
 

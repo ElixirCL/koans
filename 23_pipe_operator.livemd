@@ -16,7 +16,9 @@ result =
   |> String.upcase()
   |> String.split(" ")
   |> Enum.join("-")
+```
 
+```elixir
 assert result == ___
 ```
 
@@ -25,8 +27,13 @@ assert result == ___
 ```elixir
 nested_result = Enum.join(String.split(String.downcase("Hello World"), " "), "_")
 piped_result = "Hello World" |> String.downcase() |> String.split(" ") |> Enum.join("_")
+```
 
+```elixir
 assert nested_result == piped_result
+```
+
+```elixir
 assert piped_result == ___
 ```
 
@@ -37,7 +44,9 @@ result =
   [1, 2, 3, 4, 5]
   |> Enum.filter(&(&1 > 2))
   |> Enum.map(&(&1 * 2))
+```
 
+```elixir
 assert result == ___
 ```
 
@@ -48,7 +57,9 @@ result =
   "hello world"
   |> String.split(" ")
   |> Enum.join(", ")
+```
 
+```elixir
 assert result == ___
 ```
 
@@ -62,7 +73,9 @@ result =
   5
   |> double.()
   |> add_ten.()
+```
 
+```elixir
 assert result == ___
 ```
 
@@ -73,7 +86,9 @@ result =
   [1, 2, 3]
   |> Enum.map(&Integer.to_string/1)
   |> Enum.join("-")
+```
 
+```elixir
 assert result == ___
 ```
 
@@ -91,7 +106,9 @@ active_names =
   |> Enum.filter(& &1.active)
   |> Enum.map(& &1.name)
   |> Enum.sort()
+```
 
+```elixir
 assert active_names == ___
 ```
 
@@ -104,7 +121,9 @@ result =
   |> Enum.filter(&(String.length(&1) > 3))
   |> Enum.map(&String.upcase/1)
   |> Enum.take(3)
+```
 
+```elixir
 assert result == ___
 ```
 
@@ -115,7 +134,9 @@ result =
   [1, 2, 3]
   |> Enum.map(&(&1 * 2))
   |> then(&Enum.zip([:a, :b, :c], &1))
+```
 
+```elixir
 assert result == ___
 ```
 
@@ -129,8 +150,13 @@ process_number = fn x ->
     {num, ""} -> {:ok, num * 2}
     _ -> {:error, :invalid_number}
   end
-  
+```
+
+```elixir  
 assert process_number.("42") == ___
+```
+
+```elixir
 assert process_number.("abc") == ___
 ```
 
@@ -143,8 +169,13 @@ process_string = fn str, should_upcase ->
   |> then(&if should_upcase, do: String.upcase(&1), else: &1)
   |> String.split(" ")
 end
+```
 
+```elixir
 assert process_string.("  hello world  ", true) == ___
+```
+
+```elixir
 assert process_string.("  hello world  ", false) == ___
 ```
 
@@ -163,7 +194,9 @@ widget_total =
   |> Enum.filter(&(&1.product == "Widget"))
   |> Enum.map(& &1.amount)
   |> Enum.sum()
+```
 
+```elixir
 assert widget_total == ___
 ```
 
@@ -175,7 +208,9 @@ result =
   |> Enum.map(&(&1 * 2))
   |> tap(&IO.inspect(&1, label: "After doubling"))
   |> Enum.sum()
+```
 
+```elixir
 assert result == ___
 ```
 
@@ -191,9 +226,17 @@ word_stats =
   |> Enum.group_by(&String.first/1)
   |> Enum.map(fn {letter, words} -> {letter, length(words)} end)
   |> Enum.into(%{})
+```
 
+```elixir
 assert word_stats["d"] == ___
+```
+
+```elixir
 assert word_stats["t"] == ___
+```
+
+```elixir
 assert word_stats["q"] == ___
 ```
 
@@ -210,7 +253,9 @@ defmodule TextProcessor do
     |> String.split()
     |> length()
 end
+```
 
+```elixir
 assert TextProcessor.clean_and_count("  Hello, World! How are you?  ") == ___
 ```
 
@@ -229,8 +274,13 @@ pipeline = fn x, y ->
     {:ok, result} -> "Result: #{result}"
     {:error, reason} -> "Error: #{reason}"
 end
+```
 
+```elixir
 assert pipeline.(10, 2) == ___
+```
+
+```elixir
 assert pipeline.(10, 0) == ___
 ```
 

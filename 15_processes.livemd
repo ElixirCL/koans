@@ -14,7 +14,9 @@ assert Process.alive?(self()) == ___
 
 ```elixir
 information = Process.info(self())
+```
 
+```elixir
 assert information[:status] == ___
 ```
 
@@ -32,7 +34,9 @@ value =
     receive do
     end
   end)
+```
 
+```elixir
 assert is_pid(value) == ___
 ```
 
@@ -47,8 +51,13 @@ fast_process = spawn(fn -> :timer.sleep(10) end)
 slow_process = spawn(fn -> :timer.sleep(1000) end)
 
 :timer.sleep(50)
+```
 
+```elixir
 assert Process.alive?(fast_process) == ___
+```
+
+```elixir
 assert Process.alive?(slow_process) == ___
 ```
 
@@ -56,7 +65,9 @@ assert Process.alive?(slow_process) == ___
 
 ```elixir
 send(self(), "hola!")
+```
 
+```elixir
 receive do
   msg -> assert msg == ___
 end
@@ -71,7 +82,9 @@ wait_forever = fn ->
 end
 
 pid = spawn(wait_forever)
+```
 
+```elixir
 assert Process.alive?(pid) == ___
 ```
 
@@ -90,8 +103,13 @@ second_message =
   receive do
     message -> message
   end
+```
 
+```elixir
 assert first_message == ___
+```
+
+```elixir
 assert second_message == ___
 ```
 
@@ -113,7 +131,9 @@ timeout = 100
 
 failure_message =
   "Sorry, I didn't get the right message. Look at the message that is sent back very closely, and try again"
+```
 
+```elixir
 assert_receive ___, timeout, failure_message
 ```
 
@@ -131,9 +151,17 @@ end
 pid = spawn_link(&yelling_echo_loop/0)
 
 send(pid, {self(), "o"})
-assert_receive ___
+```
 
+```elixir
+assert_receive ___
+```
+
+```elixir
 send(pid, {self(), "hai"})
+```
+
+```elixir
 assert_receive ___
 ```
 
@@ -159,10 +187,18 @@ pid =
   end)
 
 send(pid, {self(), :get})
-assert_receive ___
+```
 
+```elixir
+assert_receive ___
+```
+
+```elixir
 send(pid, {self(), :set, "bar"})
 send(pid, {self(), :get})
+```
+
+```elixir
 assert_receive ___
 ```
 
@@ -177,7 +213,9 @@ spawn(fn ->
     5 -> send(parent, {:waited_too_long, "I am impatient"})
   end
 end)
+```
 
+```elixir
 assert_receive ___
 ```
 
@@ -201,7 +239,9 @@ receive do
 end
 
 Process.exit(pid, :random_reason)
+```
 
+```elixir
 assert_receive ___
 ```
 
@@ -210,7 +250,9 @@ assert_receive ___
 ```elixir
 Process.flag(:trap_exit, true)
 spawn_link(fn -> Process.exit(self(), :normal) end)
+```
 
+```elixir
 assert_receive {:EXIT, _pid, ___}
 ```
 
@@ -218,7 +260,9 @@ assert_receive {:EXIT, _pid, ___}
 
 ```elixir
 spawn_monitor(fn -> Process.exit(self(), :normal) end)
+```
 
+```elixir
 assert_receive {:DOWN, _ref, :process, _pid, ___}
 ```
 

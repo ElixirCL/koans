@@ -13,7 +13,9 @@ end
 
 task = Task.async(fn -> 3 * 3 end)
 do_other_stuff()
+```
 
+```elixir
 assert Task.await(task) + 1 == ___
 ```
 
@@ -21,6 +23,9 @@ assert Task.await(task) + 1 == ___
 
 ```elixir
 {result, _pid} = Task.start_link(fn -> 1 + 1 end)
+```
+
+```elixir
 assert result == ___
 ```
 
@@ -32,7 +37,9 @@ handle =
     :timer.sleep(100)
     3 * 3
   end)
+```
 
+```elixir
 assert Task.yield(handle, 10) == ___
 ```
 
@@ -47,7 +54,9 @@ handle =
 
 %Task{pid: pid} = handle
 Task.shutdown(handle)
+```
 
+```elixir
 assert Process.alive?(pid) == ___
 ```
 
@@ -56,6 +65,9 @@ assert Process.alive?(pid) == ___
 ```elixir
 handle = Task.async(fn -> 3 * 3 end)
 :timer.sleep(10)
+```
+
+```elixir
 assert Task.shutdown(handle) == {:ok, ___}
 ```
 
@@ -67,7 +79,9 @@ squares =
   |> Enum.map(fn number -> Task.async(fn -> number * number end) end)
   |> Task.yield_many(100)
   |> Enum.map(fn {_task, {:ok, result}} -> result end)
+```
 
+```elixir
 assert squares == ___
 ```
 

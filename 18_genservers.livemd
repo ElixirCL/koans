@@ -107,6 +107,9 @@ end
 
 ```elixir
 {:ok, pid} = GenServer.start_link(Laptop, "3kr3t!")
+```
+
+```elixir
 assert is_pid(pid) == ___
 ```
 
@@ -114,6 +117,9 @@ assert is_pid(pid) == ___
 
 ```elixir
 {:ok, pid} = GenServer.start_link(Laptop, "3kr3t!")
+```
+
+```elixir
 assert GenServer.call(pid, :get_password) == ___
 ```
 
@@ -121,7 +127,13 @@ assert GenServer.call(pid, :get_password) == ___
 
 ```elixir
 {:ok, pid} = GenServer.start_link(Laptop, "3kr3t!")
+```
+
+```elixir
 assert GenServer.call(pid, :get_manufacturer) == ___
+```
+
+```elixir
 assert GenServer.call(pid, :get_type) == ___
 ```
 
@@ -130,8 +142,17 @@ assert GenServer.call(pid, :get_type) == ___
 ```elixir
 {:ok, pid} = GenServer.start_link(Laptop, "3kr3t!")
 {:ok, processor, memory, graphics} = GenServer.call(pid, :get_specs)
+```
+
+```elixir
 assert processor == ___
+```
+
+```elixir
 assert memory == ___
+```
+
+```elixir
 assert graphics == ___
 ```
 
@@ -140,6 +161,9 @@ assert graphics == ___
 ```elixir
 {:ok, pid} = GenServer.start_link(Laptop, "3kr3t!")
 GenServer.cast(pid, {:change_password, "3kr3t!", "73x7!n9"})
+```
+
+```elixir
 assert GenServer.call(pid, :get_password) == ___
 ```
 
@@ -147,6 +171,9 @@ assert GenServer.call(pid, :get_password) == ___
 
 ```elixir
 {:ok, pid} = GenServer.start_link(Laptop, "3kr3t!")
+```
+
+```elixir
 assert GenServer.call(pid, {:unlock, "81u3pr!n7"}) == ___
 ```
 
@@ -154,6 +181,9 @@ assert GenServer.call(pid, {:unlock, "81u3pr!n7"}) == ___
 
 ```elixir
 {:ok, _} = GenServer.start_link(Laptop, "3kr3t!", name: :macbook)
+```
+
+```elixir
 assert GenServer.call(:macbook, :name_check) == ___
 ```
 
@@ -161,6 +191,9 @@ assert GenServer.call(:macbook, :name_check) == ___
 
 ```elixir
 Laptop.start("EL!73")
+```
+
+```elixir
 assert Laptop.unlock("EL!73") == ___
 ```
 
@@ -170,16 +203,31 @@ assert Laptop.unlock("EL!73") == ___
 Laptop.start("EL!73")
 
 {_, response} = Laptop.unlock("EL!73")
-assert response == ___
+```
 
+```elixir
+assert response == ___
+```
+
+```elixir
 Laptop.change_password("EL!73", "Elixir")
 
 {_, response} = Laptop.unlock("EL!73")
-assert response == ___
+```
 
+```elixir
+assert response == ___
+```
+
+```elixir
 {_, response} = Laptop.owner_name()
-assert response == ___
+```
 
+```elixir
+assert response == ___
+```
+
+```elixir
 :ok = Laptop.stop()
 ```
 
@@ -211,15 +259,18 @@ defmodule TimeoutServer do
     {:noreply, new_state}
   end
 end
-```
 
-```elixir
 {:ok, _pid} = TimeoutServer.start_link(100)
 # Wait for timeout to occur
 :timer.sleep(101)
 count = TimeoutServer.get_count()
-assert count == ___
+```
 
+```elixir
+assert count == ___
+```
+
+```elixir
 GenServer.stop(TimeoutServer)
 ```
 
@@ -263,15 +314,25 @@ children = [{CrashableServer, "the state"}]
 
 # Server should be running
 initial_state = CrashableServer.get_state()
-assert initial_state == ___
+```
 
+```elixir
+assert initial_state == ___
+```
+
+```elixir
 :ok = CrashableServer.crash()
 # Wait for recovery
 :timer.sleep(100)
 
 state_after_crash_recovery = CrashableServer.get_state()
-assert state_after_crash_recovery == ___
+```
 
+```elixir
+assert state_after_crash_recovery == ___
+```
+
+```elixir
 Supervisor.stop(supervisor)
 ```
 

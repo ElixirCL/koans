@@ -8,6 +8,9 @@ import ExUnit.Assertions
 
 ```elixir
 {:ok, pid} = Agent.start_link(fn -> "Hi there" end)
+```
+
+```elixir
 assert Agent.get(pid, & &1) == ___
 ```
 
@@ -15,6 +18,9 @@ assert Agent.get(pid, & &1) == ___
 
 ```elixir
 Agent.start_link(fn -> "Why hello" end, name: AgentSmith)
+```
+
+```elixir
 assert Agent.get(AgentSmith, & &1) == ___
 ```
 
@@ -26,7 +32,9 @@ Agent.start_link(fn -> "Hi there" end, name: :greeter)
 Agent.update(:greeter, fn old ->
   String.upcase(old)
 end)
+```
 
+```elixir
 assert Agent.get(:greeter, & &1) == ___
 ```
 
@@ -39,8 +47,13 @@ old_list =
   Agent.get_and_update(:groceries, fn old ->
     {old, ["Bread" | old]}
   end)
+```
 
+```elixir
 assert old_list == ___
+```
+
+```elixir
 assert Agent.get(:groceries, & &1) == ___
 ```
 
@@ -50,7 +63,9 @@ assert Agent.get(:groceries, & &1) == ___
 {:ok, pid} = Agent.start_link(fn -> "Fin." end, name: :stoppable)
 
 Agent.stop(:stoppable)
+```
 
+```elixir
 assert Process.alive?(pid) == ___
 ```
 

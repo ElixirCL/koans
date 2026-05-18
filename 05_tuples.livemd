@@ -39,6 +39,9 @@ assert Tuple.insert_at({:a, "hi"}, 1, :new_thing) == ___
 ```elixir
 {first, second} = {"Huey", "Dewey"}
 extended = {first, second, "Louie"}
+```
+
+```elixir
 assert extended == ___
 ```
 

@@ -54,8 +54,13 @@ end
 ```elixir
 musician = %Musician{name: "Andre", instrument: "violin"}
 dancer = %Dancer{name: "Darcy", dance_style: "ballet"}
+```
 
+```elixir
 assert Artist.perform(musician) == ___
+```
+
+```elixir
 assert Artist.perform(dancer) == ___
 ```
 
@@ -63,6 +68,9 @@ assert Artist.perform(dancer) == ___
 
 ```elixir
 painter = %Painter{name: "Emily"}
+```
+
+```elixir
 assert Artist.perform(painter) == ___
 ```
 

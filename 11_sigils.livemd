@@ -20,6 +20,9 @@ assert "\"Welcome to the jungle\", they said." == ___
 
 ```elixir
 matches? = ~s{This works!} == ~s[This works!]
+```
+
+```elixir
 assert matches? == ___
 ```
 

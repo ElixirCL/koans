@@ -8,6 +8,9 @@ import ExUnit.Assertions
 
 ```elixir
 adam = :human
+```
+
+```elixir
 assert adam == ___
 ```
 
@@ -15,8 +18,17 @@ assert adam == ___
 
 ```elixir
 assert is_atom(true) == ___
+```
+
+```elixir
 assert is_boolean(false) == ___
+```
+
+```elixir
 assert true == ___
+```
+
+```elixir
 assert false == ___
 ```
 
@@ -24,6 +36,9 @@ assert false == ___
 
 ```elixir
 assert is_atom(nil) == ___
+```
+
+```elixir
 assert nil == ___
 ```
 

@@ -8,7 +8,9 @@ import ExUnit.Assertions
 
 ```elixir
 kw_list = [foo: "bar"]
+```
 
+```elixir
 assert kw_list[:foo] == ___
 ```
 
@@ -16,7 +18,9 @@ assert kw_list[:foo] == ___
 
 ```elixir
 kw_list = [foo: "bar", foo: "baz"]
+```
 
+```elixir
 assert kw_list[:foo] == ___
 ```
 
@@ -24,7 +28,9 @@ assert kw_list[:foo] == ___
 
 ```elixir
 kw_list = [foo: "bar", foo1: "bar1", foo: "baz"]
+```
 
+```elixir
 assert Keyword.get_values(kw_list, :foo) == [___, ___]
 ```
 
@@ -38,7 +44,9 @@ assert [foo: "bar"] == [{___, ___}]
 
 ```elixir
 not_kw_list = [{"foo", "bar"}]
+```
 
+```elixir
 assert_raise ArgumentError, fn -> not_kw_list[___] end
 ```
 

@@ -17,6 +17,9 @@ end
 
 ```elixir
 person = %Person{}
+```
+
+```elixir
 assert person == ___
 ```
 
@@ -24,6 +27,9 @@ assert person == ___
 
 ```elixir
 nobody = %Person{}
+```
+
+```elixir
 assert nobody.age == ___
 ```
 
@@ -31,6 +37,9 @@ assert nobody.age == ___
 
 ```elixir
 joe = %Person{name: "Joe", age: 23}
+```
+
+```elixir
 assert joe.name == ___
 ```
 
@@ -39,6 +48,9 @@ assert joe.name == ___
 ```elixir
 joe = %Person{name: "Joe", age: 23}
 older = %{joe | age: joe.age + 10}
+```
+
+```elixir
 assert older.age == ___
 ```
 
@@ -46,7 +58,9 @@ assert older.age == ___
 
 ```elixir
 silvia = %Person{age: 22, name: "Silvia"}
+```
 
+```elixir
 assert Map.fetch(silvia, :age) == ___
 ```
 
@@ -66,6 +80,9 @@ end
 
 ```elixir
 airline = %Airline{}
+```
+
+```elixir
 assert put_in(airline.plane.maker, :airbus) == ___
 ```
 
@@ -73,6 +90,9 @@ assert put_in(airline.plane.maker, :airbus) == ___
 
 ```elixir
 airline = %Airline{plane: %Plane{passengers: 200}}
+```
+
+```elixir
 assert update_in(airline.plane.passengers, fn x -> x + 2 end) == ___
 ```
 
@@ -80,6 +100,9 @@ assert update_in(airline.plane.passengers, fn x -> x + 2 end) == ___
 
 ```elixir
 airline = %{plane: %{maker: :boeing}, name: "Southwest"}
+```
+
+```elixir
 assert put_in(airline[:plane][:maker], :cessna) == ___
 ```
 

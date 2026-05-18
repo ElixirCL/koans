@@ -10,7 +10,9 @@ import ExUnit.Assertions
 def greet(name) do
     "Hello, #{name}!"
 end
+```
 
+```elixir
 assert greet("World") == ___
 ```
 
@@ -18,7 +20,9 @@ assert greet("World") == ___
 
 ```elixir
 def multiply(a, b), do: a * b
-
+```
+s
+```elixir
 assert 6 == multiply(2, ___)
 ```
 
@@ -27,8 +31,13 @@ assert 6 == multiply(2, ___)
 ```elixir
 def first(foo, bar), do: "#{foo} and #{bar}"
 def first(foo), do: "Only #{foo}"
+```
 
+```elixir
 assert first("One", "Two") == ___
+```
+
+```elixir
 assert first("One") == ___
 ```
 
@@ -38,8 +47,13 @@ assert first("One") == ___
 def repeat_again(message, times \\ 3) do
   String.duplicate(message, times)
 end
+```
 
+```elixir
 assert repeat_again("Hello ") == ___
+```
+
+```elixir
 assert repeat_again("Hello ", 2) == ___
 ```
 
@@ -48,8 +62,13 @@ assert repeat_again("Hello ", 2) == ___
 ```elixir
 def sum_up(thing) when is_list(thing), do: :entire_list
 def sum_up(_thing), do: :single_thing
+```
 
+```elixir
 assert sum_up([1, 2, 3]) == ___
+```
+
+```elixir
 assert sum_up(1) == ___
 ```
 
@@ -58,8 +77,13 @@ assert sum_up(1) == ___
 ```elixir
 def bigger(a, b) when a > b, do: "#{a} is bigger than #{b}"
 def bigger(a, b) when a <= b, do: "#{a} is not bigger than #{b}"
+```
 
+```elixir
   assert bigger(10, 5) == ___
+```
+
+```elixir
   assert bigger(4, 27) == ___
 ```
 
@@ -68,8 +92,13 @@ def bigger(a, b) when a <= b, do: "#{a} is not bigger than #{b}"
 ```elixir
 def get_number(0), do: "The number was zero"
 def get_number(number), do: "The number was #{number}"
+```
 
+```elixir
 assert get_number(0) == ___
+```
+
+```elixir
 assert get_number(5) == ___
 ```
 
@@ -77,6 +106,9 @@ assert get_number(5) == ___
 
 ```elixir
 multiply = fn a, b -> a * b end
+```
+
+```elixir
 assert multiply.(2, 3) == ___
 ```
 
@@ -84,6 +116,9 @@ assert multiply.(2, 3) == ___
 
 ```elixir
 multiply = &(&1 * &2)
+```
+
+```elixir
 assert multiply.(2, 3) == ___
 ```
 
@@ -91,6 +126,9 @@ assert multiply.(2, 3) == ___
 
 ```elixir
 greet = &"Hi, #{&1}!"
+```
+
+```elixir
 assert greet.("Foo") == ___
 ```
 
@@ -98,6 +136,9 @@ assert greet.("Foo") == ___
 
 ```elixir
 three_times = &[&1, &1, &1]
+```
+
+```elixir
 assert three_times.("foo") == ___
 ```
 
@@ -108,8 +149,13 @@ inspirational_quote = fn
   {:ok, result} -> "Success is #{result}"
   {:error, reason} -> "You just lost #{reason}"
 end
+```
 
+```elixir
 assert inspirational_quote.({:ok, "no accident"}) == ___
+```
+
+```elixir
 assert inspirational_quote.({:error, "the game"}) == ___
 ```
 
@@ -118,7 +164,9 @@ assert inspirational_quote.({:error, "the game"}) == ___
 ```elixir
 def times_five_and_then(number, fun), do: fun.(number * 5)
 def square(number), do: number * number
+```
 
+```elixir
 assert times_five_and_then(2, &square/1) == ___
 ```
 
@@ -126,6 +174,9 @@ assert times_five_and_then(2, &square/1) == ___
 
 ```elixir
 cube = fn number -> number * number * number end
+```
+
+```elixir
 assert times_five_and_then(2, cube) == ___
 ```
 
@@ -136,7 +187,9 @@ result =
   "full-name"
   |> String.split("-")
   |> Enum.map_join(" ", &String.capitalize/1)
+```
 
+```elixir
 assert result == ___
 ```
 
@@ -150,7 +203,9 @@ result =
   |> Enum.filter(&(&1 > 2))
   |> Enum.map(&(&1 * 2))
   |> Enum.sum()
+```
 
+```elixir
 assert result == ___
 ```
 
@@ -162,7 +217,9 @@ cleaned =
   |> String.trim()
   |> String.downcase()
   |> String.replace(" ", "_")
+```
 
+```elixir
 assert cleaned == ___
 ```
 
@@ -176,8 +233,13 @@ transform = fn str, opts ->
     str
   end
 end
+```
 
+```elixir
 assert transform.("good", upcase: true) == ___
+```
+
+```elixir
 assert transform.("good", upcase: false) == ___
 ```
 
@@ -188,10 +250,18 @@ add_one = &(&1 + 1)
 multiply_by_two = &(&1 * 2)
 
 result = 5 |> add_one.() |> multiply_by_two.()
-assert result == ___
+```
 
+```elixir
+assert result == ___
+```
+
+```elixir
 # You can also capture existing functions
 string_length = &String.length/1
+```
+
+```elixir
 assert string_length.("hello") == ___
 ```
 

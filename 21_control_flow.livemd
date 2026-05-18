@@ -12,6 +12,9 @@ Control Flow - Making decisions and choosing paths
 
 ```elixir
 result = if true, do: "yes", else: "no"
+```
+
+```elixir
 assert result == ___
 ```
 
@@ -24,7 +27,9 @@ result =
   else
     "math is broken"
   end
+```
 
+```elixir
 assert result == ___
 ```
 
@@ -32,6 +37,9 @@ assert result == ___
 
 ```elixir
 result = unless false, do: "will execute", else: "will not execute"
+```
+
+```elixir
 assert result == ___
 ```
 
@@ -39,9 +47,21 @@ assert result == ___
 
 ```elixir
 assert if(nil, do: "truthy", else: "falsy") == ___
+```
+
+```elixir
 assert if(false, do: "truthy", else: "falsy") == ___
+```
+
+```elixir
 assert if(0, do: "truthy", else: "falsy") == ___
+```
+
+```elixir
 assert if("", do: "truthy", else: "falsy") == ___
+```
+
+```elixir
 assert if([], do: "truthy", else: "falsy") == ___
 ```
 
@@ -53,7 +73,9 @@ result =
     {4, 5, 6} -> "no match"
     {1, x, 3} -> "matched with x = #{x}"
   end
+```
 
+```elixir
 assert result == ___
 ```
 
@@ -67,9 +89,17 @@ check_number = fn x ->
     n when n < 0 -> "negative"
   end
 end
+```
 
+```elixir
 assert check_number.(5) == ___
+```
+
+```elixir
 assert check_number.(0) == ___
+```
+
+```elixir
 assert check_number.(-3) == ___
 ```
 
@@ -84,10 +114,21 @@ check_list = fn list ->
     _ -> "many elements"
   end
 end
+```
 
+```elixir
 assert check_list.([]) == ___
+```
+
+```elixir
 assert check_list.([:a]) == ___
+```
+
+```elixir
 assert check_list.([:a, :b]) == ___
+```
+
+```elixir
 assert check_list.([:a, :b, :c, :d]) == ___
 ```
 
@@ -104,7 +145,9 @@ weather =
     temperature < 30 -> "warm"
     true -> "hot"
   end
+```
 
+```elixir
 assert weather == ___
 ```
 
@@ -117,8 +160,13 @@ safe_divide = fn x, y ->
     true -> {:ok, x / y}
   end
 end
+```
 
+```elixir
 assert safe_divide.(10, 2) == ___
+```
+
+```elixir
 assert safe_divide.(10, 0) == ___
 ```
 
@@ -133,9 +181,17 @@ parse_response = fn response ->
     {:error, reason} -> "Request failed: #{reason}"
   end
 end
+```
 
+```elixir
 assert parse_response.({:ok, %{status: 200, body: "Hello"}}) == ___
+```
+
+```elixir
 assert parse_response.({:ok, %{status: 404}}) == ___
+```
+
+```elixir
 assert parse_response.({:error, :timeout}) == ___
 ```
 
@@ -151,11 +207,25 @@ categorize = fn number ->
     _ -> "other"
   end
 end
+```
 
+```elixir
 assert categorize.(4) == ___
+```
+
+```elixir
 assert categorize.(3) == ___
+```
+
+```elixir
 assert categorize.(-5) == ___
+```
+
+```elixir
 assert categorize.(3.14) == ___
+```
+
+```elixir
 assert categorize.("hello") == ___
 ```
 
@@ -179,6 +249,9 @@ process_user = fn user ->
 end
 
 user = %{active: true, verified: true, premium: false}
+```
+
+```elixir
 assert process_user.(user) == ___
 ```
 

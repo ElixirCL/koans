@@ -82,6 +82,9 @@ assert Integer.is_even(4) == ___
 
 ```elixir
 individual_digits = Integer.digits(58_127)
+```
+
+```elixir
 assert individual_digits == ___
 ```
 
@@ -89,7 +92,9 @@ assert individual_digits == ___
 
 ```elixir
 number = Integer.undigits([1, 2, 3, 4])
+```
 
+```elixir
 assert number == ___
 ```
 
@@ -97,7 +102,9 @@ assert number == ___
 
 ```elixir
 string_digit = Integer.to_string(1234)
+```
 
+```elixir
 assert string_digit == ___
 ```
 
@@ -159,8 +166,17 @@ assert Float.floor(12.345, 2) === ___
 
 ```elixir
 assert Float.round(5.5) === ___
+```
+
+```elixir
 assert Float.round(5.4) === ___
+```
+
+```elixir
 assert Float.round(8.94, 1) === ___
+```
+
+```elixir
 assert Float.round(-5.5674, 3) === ___
 ```
 
@@ -168,8 +184,13 @@ assert Float.round(-5.5674, 3) === ___
 
 ```elixir
 first..last//_step = Range.new(1, 10)
+```
 
+```elixir
 assert first == ___
+```
+
+```elixir
 assert last == ___
 ```
 
@@ -180,9 +201,17 @@ def range?(%Range{}), do: true
 def range?(_), do: false
 
 range = Range.new(1, 10)
+```
 
+```elixir
 assert 4 in range == ___
+```
+
+```elixir
 assert 10 in range == ___
+```
+
+```elixir
 assert 0 in range == ___
 ```
 
@@ -190,6 +219,9 @@ assert 0 in range == ___
 
 ```elixir
 assert range?(1..10) == ___
+```
+
+```elixir
 assert range?(0) == ___
 ```
 

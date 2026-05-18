@@ -36,6 +36,9 @@ assert Map.fetch(person, :family) == ___
 
 ```elixir
 person_with_hobby = Map.put(person, :hobby, "Kayaking")
+```
+
+```elixir
 assert Map.fetch(person_with_hobby, :hobby) == ___
 ```
 
@@ -43,6 +46,9 @@ assert Map.fetch(person_with_hobby, :hobby) == ___
 
 ```elixir
 older_person = Map.put(person, :age, 37)
+```
+
+```elixir
 assert Map.fetch(older_person, :age) == ___
 ```
 
@@ -50,6 +56,9 @@ assert Map.fetch(older_person, :age) == ___
 
 ```elixir
 younger_person = %{person | age: 16}
+```
+
+```elixir
 assert Map.fetch(younger_person, :age) == ___
 ```
 
@@ -57,6 +66,9 @@ assert Map.fetch(younger_person, :age) == ___
 
 ```elixir
 without_age = Map.delete(person, :age)
+```
+
+```elixir
 assert Map.has_key?(without_age, :age) == ___
 ```
 
@@ -70,6 +82,9 @@ assert Map.merge(%{first_name: "Jon"}, %{last_name: "Snow"}) == ___
 
 ```elixir
 merged = Map.merge(person, %{last_name: "Baratheon"})
+```
+
+```elixir
 assert Map.fetch(merged, :last_name) == ___
 ```
 

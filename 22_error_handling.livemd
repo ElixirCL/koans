@@ -17,8 +17,13 @@ parse_number = fn string ->
     _ -> {:error, :invalid_format}
   end
 end
+```
 
+```elixir
 assert parse_number.("123") == ___
+```
+
+```elixir
 assert parse_number.("abc") == ___
 ```
 
@@ -37,7 +42,9 @@ result =
     {:ok, value} -> "Result: #{value}"
     {:error, reason} -> "Error: #{reason}"
   end
+```
 
+```elixir
 assert result == ___
 ```
 
@@ -50,7 +57,9 @@ result =
   rescue
     ArithmeticError -> "Cannot divide by zero!"
   end
+```
 
+```elixir
 assert result == ___
 ```
 
@@ -65,9 +74,17 @@ safe_list_access = fn list, index ->
     e in Protocol.UndefinedError -> {:error, "#{e.value} is not a list"}
   end
 end
+```
 
+```elixir
 assert safe_list_access.([1, 2, 3], 1) == ___
+```
+
+```elixir
 assert safe_list_access.([1, 2, 3], "a") == ___
+```
+
+```elixir
 assert safe_list_access.("abc", 0) == ___
 ```
 
@@ -88,10 +105,21 @@ risky_operation = fn input ->
     ArgumentError -> {:error, :invalid_argument}
   end
 end
+```
 
+```elixir
 assert risky_operation.("divide") == ___
+```
+
+```elixir
 assert risky_operation.("access") == ___
+```
+
+```elixir
 assert risky_operation.("convert") == ___
+```
+
+```elixir
 assert risky_operation.("safe") == ___
 ```
 
@@ -105,7 +133,9 @@ result =
   catch
     :early_return -> "caught thrown value"
   end
+```
 
+```elixir
 assert result == ___
 ```
 
@@ -120,7 +150,9 @@ cleanup_called =
   after
     IO.puts("Executed but not returned")
   end
+```
 
+```elixir
 assert cleanup_called == ___
 ```
 
@@ -133,8 +165,13 @@ assert cleanup_called == ___
   after
     IO.puts("Executed but not returned")
   end
+```
 
+```elixir
 assert result == ___
+```
+
+```elixir
 assert value == ___
 ```
 
@@ -151,7 +188,9 @@ result =
   rescue
     e in CustomError -> "caught custom error: #{e.message}"
   end
+```
 
+```elixir
 assert result == ___
 ```
 
@@ -164,7 +203,9 @@ result =
   rescue
     KeyError -> "key not found"
   end
+```
 
+```elixir
 assert result == ___
 ```
 
@@ -177,7 +218,9 @@ result =
   catch
     :exit, :normal -> "caught normal exit"
   end
+```
 
+```elixir
 assert result == ___
 ```
 
@@ -199,10 +242,21 @@ handle_database_operation = fn operation ->
     :bad_query -> {:error, :invalid_query}
   end
 end
+```
 
+```elixir
 assert handle_database_operation.(:connection_error) == ___
+```
+
+```elixir
 assert handle_database_operation.(:timeout) == ___
+```
+
+```elixir
 assert handle_database_operation.(:invalid_query) == ___
+```
+
+```elixir
 assert handle_database_operation.(:success) == ___
 ```
 
@@ -225,7 +279,13 @@ enriched_error = fn ->
 end
 
 {:error, error_info} = enriched_error.()
+```
+
+```elixir
 assert error_info.type == ___
+```
+
+```elixir
 assert error_info.context == ___
 ```
 
