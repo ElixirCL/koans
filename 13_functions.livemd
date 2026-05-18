@@ -21,7 +21,7 @@ assert greet("World") == ___
 ```elixir
 def multiply(a, b), do: a * b
 ```
-s
+
 ```elixir
 assert 6 == multiply(2, ___)
 ```
